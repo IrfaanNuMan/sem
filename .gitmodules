@@ -1,3 +1,9 @@
-[submodule "db/test_db"]
-	path = db/test_db
-	url = https://github.com/datacharmer/test_db
+[submodule "db/world.sql"]
+	path = db/world.sql
+	url = https://github.com/IrfaanNuMan/sem/tree/develop/db/world.sql
+
+
+#[submodule "db/test_db"]
+#	path = db/test_db
+#	url = https://github.com/datacharmer/test_db
+
