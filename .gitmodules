@@ -1,6 +1,6 @@
 [submodule "db/world.sql"]
-	path = db/world.sql
-	url = https://github.com/IrfaanNuMan/sem/tree/develop/db/world.sql
+	path = db/world.sql/world.sql
+	url = https://github.com/IrfaanNuMan/sem/tree/develop/db/world.sql/world.sql
 
 
 #[submodule "db/test_db"]
