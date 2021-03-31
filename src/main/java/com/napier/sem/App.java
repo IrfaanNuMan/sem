@@ -126,7 +126,7 @@ public class App {
                 emp.salary = rset.getInt("salaries.salary");
                 emp.dept_name = rset.getString("dp1.dept_name");
                 emp.manager = rset.getString("manager_firstname") + " " + rset.getString("manager_lastname");
-                ;
+
                 return emp;
             } else
                 return null;
