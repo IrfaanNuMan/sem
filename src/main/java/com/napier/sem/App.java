@@ -32,8 +32,8 @@ public class App {
 //        ArrayList<Employee> employees = a.getAllSalaries();
 //        a.printSalaries(employees);
 
-        ArrayList<Employee> employees = a.getAllSalaries("Manager");
-        a.printSalaries(employees);
+//        ArrayList<Employee> employees = a.getAllSalaries("Manager");
+ //       a.printSalaries(employees);
 
         // Disconnect from database
         a.disconnect();
@@ -126,7 +126,7 @@ public class App {
                 emp.salary = rset.getInt("salaries.salary");
                 emp.dept_name = rset.getString("dp1.dept_name");
                 emp.manager = rset.getString("manager_firstname") + " " + rset.getString("manager_lastname");
-                ;
+
                 return emp;
             } else
                 return null;
