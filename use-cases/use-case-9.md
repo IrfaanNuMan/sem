@@ -1,10 +1,10 @@
-# USE CASE:9 Organize  the population from largest to smallest of all cities in a region.
+# USE CASE: 9 Produce a Report on the Salary of all Employees 
 
 ## CHARACTERISTIC INFORMATION
 
 ### Goal in Context
 
-As a *Census Evaluator* I want *to organize the population of all cities in a region from largest to smallest* so that *can analyze this data to make reports.*
+As an *Census Evaluator* I want *to produce a report on the population of all cities in a region in descending order* so that *I can provide statistics for the organisation.*
 
 ### Scope
 
@@ -16,27 +16,30 @@ Primary task.
 
 ### Preconditions
 
-The Database allows for sorting the population & region
+The Database contains all the cities in a region and their population.
 
 ### Success End Condition
 
-The population of all the cities in a region are organized from largest to smallest.
+A report is available on all the cities in a region and their population for sorting.
 
 ### Failed End Condition
 
-The population of all the cities in a region are not organized from largest to smallest.
+No report is produced.
 
 ### Primary Actor
 
-Census Evaluator
+Census Advisor.
 
 ### Trigger
 
-A report is requested on the population of cities in a region from largest to smallest.
+A request for population of all the cities in a region in descending order is requested by the Census Advisor.
 
 ## MAIN SUCCESS SCENARIO
 
-1. A report is provided onThe population of cities in a region sorted from largest to smallest.
+1. Census Advisor requests a report on the population of all cities in a region in descending order.
+2. Census Evaluator extracts all cities in a continent.
+3. Census Evaluator extracts the population of all the cities in a region.
+4. Census Evaluator organizes population of all cities in a region in descending order.
 
 ## EXTENSIONS
 
