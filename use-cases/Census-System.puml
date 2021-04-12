@@ -1,0 +1,49 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+
+left to right direction
+
+actor CE as "Census Evaluator"
+
+rectangle Database
+
+rectangle "Census System" {
+    usecase uc13 as "Get the top N populated cities in a
+    continent where N is provided by the user."
+
+    usecase uc14 as "Get the top N populated cities in a
+    region where N is provided by the user"
+
+    usecase uc15 as "Get the top N populated cities in a
+    country where N is provided by the user"
+
+    usecase uc16 as "The top N populated cities in a
+    district where N is provided by the user"
+
+    usecase uc17 as "Get All the capital cities in the
+    world organised by largest population to smallest"
+
+     usecase UCa as "Generate report"
+
+        CE -- uc13
+        uc13 ..> UCa : include
+        uc13 --- Database
+
+        CE -- uc14
+        uc14 ..> UCa : include
+        uc14 --- Database
+
+        CE -- uc15
+        uc15 ..> UCa : include
+        uc15 --- Database
+
+        CE -- uc16
+        uc16 ..> UCa : include
+        uc16 --- Database
+
+        CE -- uc17
+        uc17 ..> UCa : include
+        uc17 --- Database
+
+    }
+@enduml
