@@ -1,3 +1,5 @@
+package com.napier.sem;
+
 public class City {
     private  int id;
     private  String name;
@@ -5,11 +7,12 @@ public class City {
     private  String district;
     private int population;
 
-    public City(int id, String name, String countryCode, String district, int population) {
+   // public City(int id, String name, String countryCode, String district, int population) {
+          public City(int id, String countryCode, int population) {
         this.id = id;
-        this.name = name;
+       // this.name = name;
         this.countryCode = countryCode;
-        this.district = district;
+       // this.district = district;
         this.population = population;
 
     }
@@ -25,6 +28,11 @@ public class City {
                 '}';
     }
 
+    public void displayCity (){
+        String output;
+        output =toString();
+        System.out.println (output);
+    }
     public String getName() {
         return name;
     }

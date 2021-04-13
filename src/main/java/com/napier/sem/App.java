@@ -93,8 +93,11 @@ public class App {
             }
         }
     }
+
+    City cy = new City(22, "BLZ",30000);
+
 /*
-    public Employee getEmployee(int ID) {
+    public Employee get,Employee(int ID) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
