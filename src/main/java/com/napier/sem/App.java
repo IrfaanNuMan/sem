@@ -11,6 +11,8 @@ import java.util.ArrayList;
  *
  */
 public class App {
+
+
     /**
      *
      * @param args
@@ -20,6 +22,11 @@ public class App {
         App a = new App();
         // Connect to database
         a.connect();
+        boolean dbconn = a.dbconnection;
+        if (!dbconn) {
+            System.out.println ("database not connected");
+            return;
+        }
         // Get Employee
         Employee emp = a.getEmployee(255530);
         // Display results
@@ -31,9 +38,9 @@ public class App {
 
 //        ArrayList<Employee> employees = a.getAllSalaries();
 //        a.printSalaries(employees);
-
-        ArrayList<Employee> employees = a.getAllSalaries("Manager");
+ArrayList<Employee> employees = a.getAllSalaries("Manager");
         a.printSalaries(employees);
+
 
         // Disconnect from database
         a.disconnect();
@@ -43,6 +50,7 @@ public class App {
      * Connection to MySQL database.
      */
     private Connection con = null;
+    private boolean  dbconnection = false;
 
     /**
      * Connect to the MySQL database.
@@ -70,6 +78,7 @@ public class App {
                con = DriverManager.getConnection("jdbc:mysql://db:3306/employees?useSSL=false", "root", "example");
 
                 System.out.println("Successfully connected");
+                dbconnection = true;
                 break;
             } catch (SQLException sqle) {
                 System.out.println("Failed to connect to database attempt " + Integer.toString(i));
