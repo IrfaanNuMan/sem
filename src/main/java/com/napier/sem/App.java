@@ -1,9 +1,9 @@
 package com.napier.sem;
-
+/*
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
-import java.io.IOException;
+import java.io.IOException;*/
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -24,14 +24,15 @@ public class App {
        // Employee emp = a.getEmployee(255530);
         // Display results
        // a.displayEmployee(emp);
-        a.worldpopulation();
+       // a.worldpopulation();
 
 
 
 //        a.printSalaryReport();
 //        a.printSalaryReportByDept("d005");
-
+        ArrayList<City> cy = a.getPopDesc();
 //        ArrayList<Employee> employees = a.getAllSalaries();
+
 //        a.printSalaries(employees);
 
 //        ArrayList<Employee> employees = a.getAllSalaries("Manager");
@@ -95,46 +96,50 @@ public class App {
             }
         }
     }
-    public City worldpopulation()
-    //public Employee getEmployee(int ID)
+    /**
+     * Gets all the current employees and salaries.
+     * @return A list of all employees and salaries, or null if there is an error.
+     */
+    public ArrayList<City> getPopDesc()
+   // public ArrayList<Employee> getAllSalaries()
     {
         try
         {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect =/* "SELECT *  FROM city ";*/
+            String strSelect =
+                            "SELECT ID,Name, CountryCode, District, Population "
+                                + "FROM city order by population desc;";
 
 
-                    "SELECT ID, Name, CountryCode, District, Population "
-            + "FROM city order by population desc;";
-
-
-                    /*
-                    "SELECT emp_no, first_name, last_name "
-                            + "FROM employees "
-                            + "WHERE emp_no = " + ID;*/
+                    /*"SELECT employees.emp_no, employees.first_name, employees.last_name, salaries.salary "
+                            + "FROM employees, salaries "
+                            + "WHERE employees.emp_no = salaries.emp_no AND salaries.to_date = '9999-01-01' "
+                            + "ORDER BY employees.emp_no ASC;"; */
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
-            // Return new employee if valid.
-            // Check one is returned
-            if (rset.next())
+            // Extract employee information
+            ArrayList<City> cy = new ArrayList<City>();
+            //ArrayList<Employee> employees = new ArrayList<Employee>();
+            while (rset.next())
             {
-                City cy = new City ();
-                //Employee emp = new Employee();
-                cy.ID = rset.getInt("ID");
-                cy.Name = rset.getString("Name");
-                cy.CountryCode = rset.getString("CountryCode");
-                cy.District = rset.getString("District");
-                cy.Population = rset.getInt("Population");
-              /* emp.emp_no = rset.getInt("emp_no");
-                emp.first_name = rset.getString("first_name");
-                emp.last_name = rset.getString("last_name");*/
-                displayCity(cy);
-                return cy;
+
+                City city =  new City();
+                city.ID = rset.getInt("ID");
+                city.Name = rset.getString("Name");
+                city.CountryCode = rset.getString("CountryCode");
+                city.Population = rset.getInt("Population");
+                /*Employee emp = new Employee();
+                emp.emp_no = rset.getInt("employees.emp_no");
+                emp.first_name = rset.getString("employees.first_name");
+                emp.last_name = rset.getString("employees.last_name");
+                emp.salary = rset.getInt("salaries.salary");*/
+                cy.add(city);
+                //employees.add(emp);
             }
-            else
-                return null;
+            return cy;
+            //return employees;
         }
         catch (Exception e)
         {
@@ -143,26 +148,7 @@ public class App {
             return null;
         }
     }
-    public void displayCity(City cy)
-   /* public void displayEmployee(Employee emp)*/
-    {
-        if (cy != null)
-        {
-            System.out.println(
-                    cy.ID + " "
-                            + cy.Name + " "
-                            + cy.CountryCode + " "
-                            + cy.District + " "
-                            + cy.Population + "\n");
-                    /*emp.emp_no + " "
-                            + emp.first_name + " "
-                            + emp.last_name + "\n"
-                            + emp.title + "\n"
-                            + "Salary:" + emp.salary + "\n"
-                            + emp.dept_name + "\n"
-                            + "Manager: " + emp.manager + "\n");*/
-        }
-    }
+
 
 
 } //end class
