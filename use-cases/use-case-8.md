@@ -1,10 +1,10 @@
-# USE CASE:8 Delete employee details
+# USE CASE: 8 Produce a Report on the Salary of all Employees 
 
 ## CHARACTERISTIC INFORMATION
 
 ### Goal in Context
 
-As an *HR advisor* I want *to delete employee's details* so that *the company is compliant with data retention legislation.*
+As an *Census Evaluator* I want *to produce a report on the population of all cities in a continent in descending order* so that *I can provide statistics for the organisation.*
 
 ### Scope
 
@@ -16,28 +16,30 @@ Primary task.
 
 ### Preconditions
 
-The Database has the employee information.
+The Database contains all the cities in a continent and their population.
 
 ### Success End Condition
 
-The employee information is deleted from the database.
+A report is available on all the cities in a continent and their population for sorting.
 
 ### Failed End Condition
 
-The employee information is not deleted from the database.
+No report is produced.
 
 ### Primary Actor
 
-HR Advisor.
+Census Advisor.
 
 ### Trigger
 
-The employee no longer works for the company.
+A request for population of all the cities in a continent in descending order is requested by the Census Advisor.
 
 ## MAIN SUCCESS SCENARIO
 
-1. HR advisor deletes employee information to the database.
-
+1. Census Advisor requests a report on the population of all cities in a continent in descending order.
+2. Census Evaluator extracts all cities in a continent.
+3. Census Evaluator extracts the population of all the cities in a continent
+4. Census Evaluator organizes population of all cities in a continent in descending order.
 
 ## EXTENSIONS
 
