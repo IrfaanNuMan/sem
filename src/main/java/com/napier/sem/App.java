@@ -12,7 +12,6 @@ import java.util.ArrayList;
  */
 public class App {
     /**
-     *
      * @param args
      */
     public static void main(String[] args) {
@@ -21,22 +20,22 @@ public class App {
         // Connect to database
         a.connect();
         // Get Employee
-       // Employee emp = a.getEmployee(255530);
+        // Employee emp = a.getEmployee(255530);
         // Display results
-       // a.displayEmployee(emp);
-       // a.worldpopulation();
-
+        // a.displayEmployee(emp);
+        // a.worldpopulation();
 
 
 //        a.printSalaryReport();
 //        a.printSalaryReportByDept("d005");
         ArrayList<City> cy = a.getPopDesc();
-//        ArrayList<Employee> employees = a.getAllSalaries();
 
+//        ArrayList<Employee> employees = a.getAllSalaries();
+          a.displayCity(City);
 //        a.printSalaries(employees);
 
 //        ArrayList<Employee> employees = a.getAllSalaries("Manager");
- //       a.printSalaries(employees);
+        //       a.printSalaries(employees);
 
         // Disconnect from database
         a.disconnect();
@@ -67,10 +66,10 @@ public class App {
                 Thread.sleep(0);
 
                 // Connect to database locally
-               // con = DriverManager.getConnection("jdbc:mysql://localhost:33060/employees?useSSL=true", "root", "example");
+                // con = DriverManager.getConnection("jdbc:mysql://localhost:33060/employees?useSSL=true", "root", "example");
 
                 // Connect to database inside docker
-               con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
+                con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
 
                 System.out.println("Successfully connected");
                 break;
@@ -96,21 +95,22 @@ public class App {
             }
         }
     }
+
     /**
      * Gets all the current employees and salaries.
+     *
      * @return A list of all employees and salaries, or null if there is an error.
      */
-    public ArrayList<City> getPopDesc()
-   // public ArrayList<Employee> getAllSalaries()
+    public <displayArraylist> ArrayList<City> getPopDesc()
+    // public ArrayList<Employee> getAllSalaries()
     {
-        try
-        {
+        try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                            "SELECT ID,Name, CountryCode, District, Population "
-                                + "FROM city order by population desc;";
+                    "SELECT ID,Name, CountryCode, District, Population "
+                            + "FROM city order by population desc;";
 
 
                     /*"SELECT employees.emp_no, employees.first_name, employees.last_name, salaries.salary "
@@ -122,10 +122,9 @@ public class App {
             // Extract employee information
             ArrayList<City> cy = new ArrayList<City>();
             //ArrayList<Employee> employees = new ArrayList<Employee>();
-            while (rset.next())
-            {
+            while (rset.next()) {
 
-                City city =  new City();
+                City city = new City();
                 city.ID = rset.getInt("ID");
                 city.Name = rset.getString("Name");
                 city.CountryCode = rset.getString("CountryCode");
@@ -137,18 +136,37 @@ public class App {
                 emp.salary = rset.getInt("salaries.salary");*/
                 cy.add(city);
                 //employees.add(emp);
+               // displayArraylist <>;
+
             }
             return cy;
+
             //return employees;
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get City details");
             return null;
         }
     }
 
+    public void displayCity(City cy)
+        /* public void displayEmployee(Employee emp)*/ {
+        if (cy != null) {
+            System.out.println(
+                    cy.ID + " "
+                            + cy.Name + " "
+                            + cy.CountryCode + " "
+                            + cy.District + " "
+                            + cy.Population + "\n");
+                    /*emp.emp_no + " "
+                            + emp.first_name + " "
+                            + emp.last_name + "\n"
+                            + emp.title + "\n"
+                            + "Salary:" + emp.salary + "\n"
+                            + emp.dept_name + "\n"
+                            + "Manager: " + emp.manager + "\n");*/
 
 
-} //end class
+        }
+    }
+}//end class
