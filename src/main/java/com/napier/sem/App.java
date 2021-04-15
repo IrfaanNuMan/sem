@@ -27,6 +27,7 @@ public class App {
         a.worldpopulation();
 
 
+
 //        a.printSalaryReport();
 //        a.printSalaryReportByDept("d005");
 
@@ -105,7 +106,7 @@ public class App {
             String strSelect =/* "SELECT *  FROM city ";*/
 
 
-                    "SELECT Name, CountryCode, District, Population "
+                    "SELECT ID, Name, CountryCode, District, Population "
             + "FROM city order by population desc;";
 
 
@@ -129,6 +130,7 @@ public class App {
               /* emp.emp_no = rset.getInt("emp_no");
                 emp.first_name = rset.getString("first_name");
                 emp.last_name = rset.getString("last_name");*/
+                displayCity(cy);
                 return cy;
             }
             else
@@ -141,7 +143,7 @@ public class App {
             return null;
         }
     }
-    public void displayEmployee(City cy)
+    public void displayCity(City cy)
    /* public void displayEmployee(Employee emp)*/
     {
         if (cy != null)
