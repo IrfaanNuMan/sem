@@ -20,22 +20,8 @@ public class App {
         App a = new App();
         // Connect to database
         a.connect();
-        // Get Employee
-       // Employee emp = a.getEmployee(255530);
-        // Display results
-       // a.displayEmployee(emp);
+
         a.worldpopulation();
-
-
-
-//        a.printSalaryReport();
-//        a.printSalaryReportByDept("d005");
-
-//        ArrayList<Employee> employees = a.getAllSalaries();
-//        a.printSalaries(employees);
-
-//        ArrayList<Employee> employees = a.getAllSalaries("Manager");
- //       a.printSalaries(employees);
 
         // Disconnect from database
         a.disconnect();
@@ -103,33 +89,25 @@ public class App {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect =/* "SELECT *  FROM city ";*/
+            String strSelect ="SELECT ID, Name, CountryCode, District, Population "
+                            + "FROM city order by population desc;";
 
 
-                    "SELECT ID, Name, CountryCode, District, Population "
-            + "FROM city order by population desc;";
 
-
-                    /*
-                    "SELECT emp_no, first_name, last_name "
-                            + "FROM employees "
-                            + "WHERE emp_no = " + ID;*/
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
-            // Return new employee if valid.
+            // Return new City valid.
             // Check one is returned
             if (rset.next())
             {
                 City cy = new City ();
-                //Employee emp = new Employee();
+
                 cy.ID = rset.getInt("ID");
                 cy.Name = rset.getString("Name");
                 cy.CountryCode = rset.getString("CountryCode");
                 cy.District = rset.getString("District");
                 cy.Population = rset.getInt("Population");
-              /* emp.emp_no = rset.getInt("emp_no");
-                emp.first_name = rset.getString("first_name");
-                emp.last_name = rset.getString("last_name");*/
+
                 displayCity(cy);
                 return cy;
             }
@@ -144,7 +122,7 @@ public class App {
         }
     }
     public void displayCity(City cy)
-   /* public void displayEmployee(Employee emp)*/
+
     {
         if (cy != null)
         {
@@ -154,13 +132,7 @@ public class App {
                             + cy.CountryCode + " "
                             + cy.District + " "
                             + cy.Population + "\n");
-                    /*emp.emp_no + " "
-                            + emp.first_name + " "
-                            + emp.last_name + "\n"
-                            + emp.title + "\n"
-                            + "Salary:" + emp.salary + "\n"
-                            + emp.dept_name + "\n"
-                            + "Manager: " + emp.manager + "\n");*/
+
         }
     }
 
