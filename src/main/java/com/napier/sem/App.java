@@ -102,11 +102,11 @@ public class App {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "SELECT *  FROM city ";
+            String strSelect =/* "SELECT *  FROM city ";*/
 
 
-                    /*"SELECT Name, CountryCode, District, Population"
-            + "FROM city order by population desc;";*/
+                    "SELECT Name, CountryCode, District, Population "
+            + "FROM city order by population desc;";
 
 
                     /*
