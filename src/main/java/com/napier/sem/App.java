@@ -31,7 +31,8 @@ public class App {
         ArrayList<City> cy = a.getPopDesc();
 
 //        ArrayList<Employee> employees = a.getAllSalaries();
-          a.displayCity(City);
+        // a.displayCity(City);
+        a.printreport(cy);
 //        a.printSalaries(employees);
 
 //        ArrayList<Employee> employees = a.getAllSalaries("Manager");
@@ -109,8 +110,13 @@ public class App {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT ID,Name, CountryCode, District, Population "
-                            + "FROM city order by population desc;";
+                    /*"SELECT ID,Name, CountryCode, District, Population "
+                            + "FROM city order by population desc;";*/
+
+           "SELECT city.name, countrycode, district, city.population "
+           + " FROM city,country "
+            + "WHERE city.CountryCode = country.Code AND country.Continent = 'Africa' "
+            +"order by city.population desc; ";
 
 
                     /*"SELECT employees.emp_no, employees.first_name, employees.last_name, salaries.salary "
@@ -136,7 +142,7 @@ public class App {
                 emp.salary = rset.getInt("salaries.salary");*/
                 cy.add(city);
                 //employees.add(emp);
-               // displayArraylist <>;
+
 
             }
             return cy;
@@ -149,15 +155,15 @@ public class App {
         }
     }
 
-    public void displayCity(City cy)
-        /* public void displayEmployee(Employee emp)*/ {
-        if (cy != null) {
+    /* public void displayCity(City cy)*/
+    /* public void displayEmployee(Employee emp) */   /*{
+       if (cy != null) {
             System.out.println(
                     cy.ID + " "
                             + cy.Name + " "
                             + cy.CountryCode + " "
                             + cy.District + " "
-                            + cy.Population + "\n");
+                            + cy.Population + "\n");*/
                     /*emp.emp_no + " "
                             + emp.first_name + " "
                             + emp.last_name + "\n"
@@ -165,8 +171,32 @@ public class App {
                             + "Salary:" + emp.salary + "\n"
                             + emp.dept_name + "\n"
                             + "Manager: " + emp.manager + "\n");*/
-
+/*
 
         }
+    }*/
+
+
+    /**
+     * Prints a list of employees.
+     *
+ //    * @param employees The list of employees to print.
+     */
+    public void printreport(ArrayList<City> cy)
+    /*public void printSalaries(ArrayList<Employee> employees)*/ {
+        // Print header
+        System.out.println(String.format("%-10s %-15s %-20s %-8s %-15s", "ID", "Name", "Country Code", "District", "Population"));
+        // System.out.println(String.format("%-10s %-15s %-20s %-8s %-15s" , "Emp No", "First Name", "Last Name", "Salary", "Title"));
+        // Loop over all employees in the list
+        // for (Employee emp : employees)
+        for (City city : cy) {
+            String city_string =
+                    //String emp_string =
+                    String.format("%-10s %-15s %-20s %-8s %-15s",
+                            city.ID, city.Name, city.CountryCode, city.District, city.Population);
+            // emp.emp_no, emp.first_name, emp.last_name, emp.salary, emp.title);
+            System.out.println(city_string);
+//end class
+        }
     }
-}//end class
+}
