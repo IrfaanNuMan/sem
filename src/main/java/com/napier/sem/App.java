@@ -144,7 +144,7 @@ public class App {
     {
         // Print header
 
-        System.out.println(String.format("%-10s %-15s %-20s %-8s %-15s", "ID", "Name", "Country Code", "District", "Population"));
+        System.out.println(String.format( "All the cities in the world descending \n" + "%-10s %-15s %-20s %-8s %-15s", "ID", "Name", "Country Code", "District", "Population"));
 
         // Loop over all cities in the list
         for (City city : cy)
