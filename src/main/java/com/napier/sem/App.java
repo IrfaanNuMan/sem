@@ -59,10 +59,10 @@ public class App {
                 Thread.sleep(0);
 
                 // Connect to database locally
-               // con = DriverManager.getConnection("jdbc:mysql://localhost:33060/employees?useSSL=true", "root", "example");
+                // con = DriverManager.getConnection("jdbc:mysql://localhost:33060/employees?useSSL=true", "root", "example");
 
                 // Connect to database inside docker
-               con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
+                con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
 
                 System.out.println("Successfully connected");
                 break;
@@ -103,7 +103,7 @@ public class App {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect = "SELECT ID, Name, CountryCode, District, Population "
-                            + "FROM city order by population desc;";
+                    + "FROM city order by population desc;";
 
 
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -152,7 +152,7 @@ public class App {
         {
             String emp_string =
                     String.format("%-10s %-15s %-20s %-8s %-15s",
-                           city.id, city.name, city.countryCode, city.district, city.population);
+                            city.id, city.name, city.countryCode, city.district, city.population);
 
             System.out.println(emp_string);
         }
