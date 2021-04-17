@@ -102,8 +102,10 @@ public class App {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "SELECT  ID, name, countrycode, district, population "
-            + "FROM city order by population desc limit 10;";
+            String strSelect = "SELECT ID ,city.name, countrycode, district, city.population "
+            + "FROM city,country "
+            + "WHERE city.CountryCode = country.Code AND country.Continent = 'Africa' "
+             + "order by city.population desc limit 10;";
 
 
 
