@@ -21,11 +21,18 @@ public class App {
         // Connect to database
         a.connect();
 
-        a.worldpopulation();
+
+/***
+ * method to get all city's population and print the report
+ */
+        ArrayList<City> cy = a.getPop();
+        a.printreport(cy);
+
+
 
         // Disconnect from database
         a.disconnect();
-    } // end main
+    }
 
     /**
      * Connection to MySQL database.
@@ -52,10 +59,10 @@ public class App {
                 Thread.sleep(0);
 
                 // Connect to database locally
-               // con = DriverManager.getConnection("jdbc:mysql://localhost:33060/employees?useSSL=true", "root", "example");
+                // con = DriverManager.getConnection("jdbc:mysql://localhost:33060/employees?useSSL=true", "root", "example");
 
                 // Connect to database inside docker
-               con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
+                con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
 
                 System.out.println("Successfully connected");
                 break;
@@ -81,60 +88,73 @@ public class App {
             }
         }
     }
-    public City worldpopulation()
-    //public Employee getEmployee(int ID)
+
+
+    /***
+     *
+     * @return
+     */
+
+    public ArrayList<City> getPop()
     {
         try
         {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect ="SELECT ID, Name, CountryCode, District, Population "
-                            + "FROM city order by population desc;";
+            String strSelect = "SELECT ID, Name, CountryCode, District, Population "
+                    + "FROM city order by population desc;";
 
 
-
-            // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
-            // Return new City valid.
-            // Check one is returned
-            if (rset.next())
+
+            ArrayList<City> cy = new ArrayList<City>();
+
+            while (rset.next())
             {
-                City cy = new City ();
 
-                cy.ID = rset.getInt("ID");
-                cy.Name = rset.getString("Name");
-                cy.CountryCode = rset.getString("CountryCode");
-                cy.District = rset.getString("District");
-                cy.Population = rset.getInt("Population");
+                City city = new City();
+                city.id = rset.getInt("ID");
+                city.name = rset.getString("NAME");
+                city.countryCode = rset.getString("COUNTRYCODE");
+                city.district = rset.getString("DISTRICT");
+                city.population = rset.getInt("POPULATION");
+                cy.add(city);
 
-                displayCity(cy);
-                return cy;
             }
-            else
-                return null;
+
+            return cy;
+
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get City details");
+            System.out.println("Failed to get salary details");
             return null;
         }
     }
-    public void displayCity(City cy)
 
+    /***
+     *
+     * @param cy
+     */
+
+
+    public void printreport(ArrayList<City> cy)
     {
-        if (cy != null)
-        {
-            System.out.println(
-                    cy.ID + " "
-                            + cy.Name + " "
-                            + cy.CountryCode + " "
-                            + cy.District + " "
-                            + cy.Population + "\n");
+        // Print header
 
+        System.out.println(String.format("%-10s %-15s %-20s %-8s %-15s", "ID", "Name", "Country Code", "District", "Population"));
+
+        // Loop over all cities in the list
+        for (City city : cy)
+
+        {
+            String emp_string =
+                    String.format("%-10s %-15s %-20s %-8s %-15s",
+                            city.id, city.name, city.countryCode, city.district, city.population);
+
+            System.out.println(emp_string);
         }
     }
-
-
-} //end class
+}
