@@ -102,8 +102,9 @@ public class App {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "SELECT ID, Name, CountryCode, District, Population "
-                    + "FROM city order by population desc;";
+            String strSelect = "SELECT  ID, name, countrycode, district, population "
+            + "FROM city order by population desc limit 10;";
+
 
 
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -129,7 +130,7 @@ public class App {
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get salary details");
+            System.out.println("Failed to get City details");
             return null;
         }
     }
