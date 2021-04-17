@@ -114,11 +114,11 @@ public class App {
             {
 
                 City city = new City();
-                city.id = rset.getInt("ID");
-                city.name = rset.getString("NAME");
-                city.countryCode = rset.getString("COUNTRYCODE");
-                city.district = rset.getString("DISTRICT");
-                city.population = rset.getInt("POPULATION");
+                city.ID = rset.getInt("ID");
+                city.Name = rset.getString("NAME");
+                city.CountryCode = rset.getString("COUNTRYCODE");
+                city.District = rset.getString("DISTRICT");
+                city.Population = rset.getInt("POPULATION");
                 cy.add(city);
 
             }
@@ -152,7 +152,7 @@ public class App {
         {
             String emp_string =
                     String.format("%-10s %-15s %-20s %-8s %-15s",
-                            city.id, city.name, city.countryCode, city.district, city.population);
+                            city.ID, city.Name, city.CountryCode, city.District, city.Population);
 
             System.out.println(emp_string);
         }
