@@ -21,14 +21,14 @@ jobs:
   include:
     - stage: unit tests
       install: skip
-      jdk: oraclejdk15
-      script: mvn test -Dtest=com.napier.sem.AppTest
+      jdk: oraclejdk11
+      script: mvn test -Dtest=com.napier.sem.TestApp
     - stage: integration tests
-      jdk: oraclejdk15
+      jdk: oraclejdk11
       script: echo "Integration Tests"
     - stage: deploy
       install: skip
-      jdk: oraclejdk15
+      jdk: oraclejdk11
       script: echo "Deploy"
 
 
