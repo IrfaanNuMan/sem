@@ -25,10 +25,13 @@ public class App {
 /***
  * method to get all city's population and print the report
  */
+        //Prints all cities in the world descending
         ArrayList<City> cy = a.getPop();
         a.printreport(cy);
 
-
+        //Prints the top N populated cities in the world
+        ArrayList<City> cy1 = a.topNPopCitiesInWorld();
+        a.printTopNPopCitiesInWorld(cy1);
 
         // Disconnect from database
         a.disconnect();
@@ -102,8 +105,9 @@ public class App {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
-            String strSelect = "SELECT ID, Name, CountryCode, District, Population "
-                    + "FROM city order by population desc;";
+            String strSelect = "SELECT  ID, name, countrycode, district, population "
+            + "FROM city order by population desc limit 10;";
+
 
 
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -129,7 +133,7 @@ public class App {
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get salary details");
+            System.out.println("Failed to get City details");
             return null;
         }
     }
@@ -144,7 +148,7 @@ public class App {
     {
         // Print header
 
-        System.out.println(String.format( "All the cities in the world descending \n" + "%-10s %-15s %-20s %-8s %-15s", "ID", "Name", "Country Code", "District", "Population"));
+        System.out.println(String.format("All the cities in the world population descending order \n" + "%-10s %-15s %-20s %-8s %-15s", "ID", "Name", "Country Code", "District", "Population"));
 
         // Loop over all cities in the list
         for (City city : cy)
@@ -157,4 +161,78 @@ public class App {
             System.out.println(emp_string);
         }
     }
+
+/***
+ * ########################################################
+ * TOP N CITIES IN WORLD DESCENDING
+ * ##################################################3#####
+ */
+
+public ArrayList<City> topNPopCitiesInWorld()
+{
+    try
+    {
+        // Create an SQL statement
+        Statement stmt = con.createStatement();
+        // Create string for SQL statement
+        String strSelect = "SELECT ID ,city.name, countrycode, district, city.population "
+                + "FROM city,country "
+                + "WHERE city.CountryCode = country.Code AND country.Continent = 'Africa' "
+                + "order by city.population desc limit 10;";
+
+
+
+        ResultSet rset = stmt.executeQuery(strSelect);
+
+        ArrayList<City> cy = new ArrayList<City>();
+
+        while (rset.next())
+        {
+
+            City city = new City();
+            city.ID = rset.getInt("ID");
+            city.Name = rset.getString("NAME");
+            city.CountryCode = rset.getString("COUNTRYCODE");
+            city.District = rset.getString("DISTRICT");
+            city.Population = rset.getInt("POPULATION");
+            cy.add(city);
+
+        }
+
+        return cy;
+
+    }
+    catch (Exception e)
+    {
+        System.out.println(e.getMessage());
+        System.out.println("Failed to get City details");
+        return null;
+    }
 }
+
+    /***
+     *
+     * @param cy1
+     */
+
+
+    public void printTopNPopCitiesInWorld(ArrayList<City> cy1)
+    {
+        // Print header
+
+        System.out.println(String.format( "The top N populated cities in the world \n" + "%-10s %-15s %-20s %-8s %-15s", "ID", "Name", "Country Code", "District", "Population"));
+
+        // Loop over all cities in the list
+        for (City city : cy1)
+
+        {
+            String emp_string =
+                    String.format("%-10s %-15s %-20s %-8s %-15s",
+                            city.ID, city.Name, city.CountryCode, city.District, city.Population);
+
+            System.out.println(emp_string);
+        }
+    }
+}
+
+
