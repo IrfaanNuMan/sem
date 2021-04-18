@@ -30,8 +30,8 @@ public class App {
         a.printreport(cy);
 
         //Prints the top N populated cities in the world
-        ArrayList<City> cy1 = a.topNPopCitiesInWorld();
-        a.printTopNPopCitiesInWorld(cy1);
+       /* ArrayList<City> cy1 = a.topNPopCitiesInWorld();
+        a.printTopNPopCitiesInWorld(cy1);*/
 
         //Prints the top N populated cities in a continent
         ArrayList<City> cy2 = a.topNPopulatedCitiesContinent();
@@ -102,8 +102,9 @@ public class App {
 
 
     /***
-     *
-     * @return -- All the cities in the world organised by largest population to smallest.
+     *##########################################################
+     * @return --THE TOP N POPULATED CITIES IN THE WORLD
+     * #########################################################
      */
 
     public ArrayList<City> getPop()
@@ -156,7 +157,7 @@ public class App {
     {
         // Print header
 
-        System.out.println(String.format("All the cities in the world population descending order \n" + "%-10s %-15s %-20s %-8s %-15s", "ID", "Name", "Country Code", "District", "Population"));
+        System.out.println(String.format("THE TOP N POPULATED CITIES IN THE WORLD \n" + "%-10s %-15s %-20s %-8s %-15s", "ID", "Name", "Country Code", "District", "Population"));
 
         // Loop over all cities in the list
         for (City city : cy)
@@ -172,10 +173,10 @@ public class App {
 
 /***
  * ########################################################
- * TOP N CITIES IN WORLD DESCENDING
+ * TOP N POPULATED CITIES IN A CONTINENT
  * ##################################################3#####
  */
-
+/*
 public ArrayList<City> topNPopCitiesInWorld()
 {
     try
@@ -223,12 +224,12 @@ public ArrayList<City> topNPopCitiesInWorld()
      * @param cy1
      */
 
-
+/*
     public void printTopNPopCitiesInWorld(ArrayList<City> cy1)
     {
         // Print header
 
-        System.out.println(String.format( "The top N populated cities in the world \n" + "%-10s %-15s %-20s %-8s %-15s", "ID", "Name", "Country Code", "District", "Population"));
+        System.out.println(String.format( "TOP N POPULATED CITIES IN A CONTINENT \n" + "%-10s %-15s %-20s %-8s %-15s", "ID", "Name", "Country Code", "District", "Population"));
 
         // Loop over all cities in the list
         for (City city : cy1)
@@ -240,7 +241,7 @@ public ArrayList<City> topNPopCitiesInWorld()
 
             System.out.println(emp_string);
         }
-    }
+    }*/
 
     /***
      *
@@ -301,7 +302,7 @@ public ArrayList<City> topNPopCitiesInWorld()
     {
         // Print header
 
-        System.out.println(String.format(" The top N populated cities in a continent \n" + "%-10s %-15s %-20s %-8s %-15s", "ID", "Name", "Country Code", "District", "Population"));
+        System.out.println(String.format(" THE TOP N POPULATED CITIES IN A CONTINENT \n" + "%-10s %-15s %-20s %-8s %-15s", "ID", "Name", "Country Code", "District", "Population"));
 
         // Loop over all cities in the list
         for (City city : cy2)
