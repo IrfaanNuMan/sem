@@ -33,6 +33,10 @@ public class App {
         ArrayList<City> cy1 = a.topNPopCitiesInWorld();
         a.printTopNPopCitiesInWorld(cy1);
 
+        //Prints the top N populated cities in a continent
+        ArrayList<City> cy2 = a.topNPopulatedCitiesContinent();
+        a.printtopNPopulatedCitiesContinent(cy2);
+
         // Disconnect from database
         a.disconnect();
     }
@@ -233,6 +237,82 @@ public ArrayList<City> topNPopCitiesInWorld()
             System.out.println(emp_string);
         }
     }
+
+    /***
+     *
+     * ###########################################
+     * THE TOP N POPULATED CITIES IN A CONTINENT
+     * ###########################################
+     */
+
+    public ArrayList<City> topNPopulatedCitiesContinent()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect = "SELECT ID ,city.name, countrycode, district, city.population "
+                    + "FROM city,country "
+                    + "WHERE city.CountryCode = country.Code AND country.Continent = 'Africa' "
+                    + "order by city.population desc limit 10;";
+
+
+
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            ArrayList<City> cy2 = new ArrayList<City>();
+
+            while (rset.next())
+            {
+
+                City city = new City();
+                city.ID = rset.getInt("ID");
+                city.Name = rset.getString("NAME");
+                city.CountryCode = rset.getString("COUNTRYCODE");
+                city.District = rset.getString("DISTRICT");
+                city.Population = rset.getInt("POPULATION");
+                cy2.add(city);
+
+            }
+
+            return cy2;
+
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get City details");
+            return null;
+        }
+    }
+
+    /***
+     *
+     * @param cy2
+     */
+
+
+    public void printtopNPopulatedCitiesContinent(ArrayList<City> cy2)
+    {
+        // Print header
+
+        System.out.println(String.format(" The top N populated cities in a continent \n" + "%-10s %-15s %-20s %-8s %-15s", "ID", "Name", "Country Code", "District", "Population"));
+
+        // Loop over all cities in the list
+        for (City city : cy2)
+
+        {
+            String emp_string =
+                    String.format("%-10s %-15s %-20s %-8s %-15s",
+                            city.ID, city.Name, city.CountryCode, city.District, city.Population);
+
+            System.out.println(emp_string);
+        }
+    }
+
+
+
 }
 
 
