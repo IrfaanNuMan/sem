@@ -479,12 +479,20 @@ public ArrayList<City> topNPopCitiesInWorld()
 
         public void printAllCapCitiesInWorldDesc (ArrayList < City > cy5)
         {
+            // Check employees is not null
+            if (cy5 == null)
+            {
+                System.out.println("No City");
+                return;
+            }
             // Print header
 
             System.out.println(String.format(" ALL CITIES IN THE WORLD DESCENDING \n" + "%-10s %-15s %-20s %-8s %-15s", "ID", "Name", "Country Code", "District", "Population"));
 
             // Loop over all cities in the list
             for (City city : cy5) {
+                if (city == null)
+                    continue;
                 String emp_string =
                         String.format("%-10s %-15s %-20s %-8s %-15s",
                                 city.ID, city.Name, city.CountryCode, city.District, city.Population);
