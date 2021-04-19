@@ -19,8 +19,8 @@ public class AppIntegrationTest {
         app.connect("localhost:33060");
     }
 
-    @Test
-    void testPrintAllCapCitiesInWorldDesc(ArrayList < City > cy5) {
+   /* @Test
+    void testPrintAllCapCitiesInWorldDesc(ArrayList < City > cy5) {*/
 
      /*
         City city = app.printAllCapCitiesInWorldDesc ( );
@@ -31,4 +31,3 @@ public class AppIntegrationTest {
 
 
     }
-}
