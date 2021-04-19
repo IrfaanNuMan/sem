@@ -185,7 +185,7 @@ public ArrayList<City> topNPopCitiesInWorld()
                 + "FROM city,country "
                 + "WHERE city.CountryCode = country.Code AND country.Continent = 'Africa' "
                 + "order by city.population desc limit 10;";
-
+       // a.connect();
 
 
         ResultSet rset = stmt.executeQuery(strSelect);
