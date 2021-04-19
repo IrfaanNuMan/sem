@@ -4,7 +4,7 @@ USE CASE: 18 All the capital cities in a continent organized by largest populati
 
 ### Goal in Context
 
-As an *HR advisor* I want *to produce a report on the capital cities in continent by largest to smallest population.*
+As an *Census advisor* I want *to produce a report on the capital cities in continent by largest to smallest population.*
 
 ### Scope
 
