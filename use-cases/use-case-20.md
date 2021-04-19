@@ -4,7 +4,7 @@ USE CASE: 20 Top N populated capital cities in the world where n is provided by 
 
 ### Goal in Context
 
-As an *HR advisor* I want *to produce a report on the top populated capital cities.*
+As an *Census advisor* I want *to produce a report on the top populated capital cities.*
 
 ### Scope
 
