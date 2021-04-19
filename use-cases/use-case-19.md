@@ -4,7 +4,7 @@ USE CASE: 19 All the capital cities in a region organized by largest population 
 
 ### Goal in Context
 
-As an *HR advisor* I want *to produce a report on the capital cities in a region by largest to smallest population.*
+As an *Census advisor* I want *to produce a report on the capital cities in a region by largest to smallest population.*
 
 ### Scope
 
