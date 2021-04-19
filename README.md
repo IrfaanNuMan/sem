@@ -41,7 +41,7 @@ seMethods readme
 | 29  | The population of a country. |   |
 | 30  | The population of a district. |   |
 | 31  | The population of a city. |   |
-| 32  | Provide  provide the number of people who speak the following the following languages from greatest number to smallest, including the percentage of the world population: -Chinese - English - Hindi - Spanish - Arabic |   |
+| 32  |The number of people who speak the following the following languages in descending order, including the percentage of the world population: Chinese, English,Hindi,Spanish,Arabic |   |
 
 
 
