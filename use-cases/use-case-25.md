@@ -4,7 +4,7 @@ USE CASE: 25 The population of people, people living in cities, and people not l
 
 ### Goal in Context
 
-As an *HR advisor* I want *to produce a report on the population of people, people living in cities, and people not living in cities in each country.*
+As an *Census advisor* I want *to produce a report on the population of people, people living in cities, and people not living in cities in each country.*
 
 ### Scope
 
