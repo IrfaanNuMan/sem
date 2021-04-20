@@ -14,7 +14,11 @@ public class AppIntegrationTest {
         app = new App();
         app.connect("localhost:33060");
     }
-
+    @Test
+    void unitTest3()
+    {
+        assertEquals(5, 5, "Messages are equal");
+    }
     /*@Test
     void testPrintAllCapCitiesInWorldDesc(ArrayList < City > cy5) {*/
 
