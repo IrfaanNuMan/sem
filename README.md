@@ -5,8 +5,11 @@ seMethods readme
 - Develop Build Status [![Build Status](https://travis-ci.com/IrfaanNuMan/sem.svg?branch=develop)](https://travis-ci.com/IrfaanNuMan/sem)
 - License [![LICENSE](https://img.shields.io/github/license/IrfaanNuMan/sem.svg?style=flat-square)](https://github.com/IrfaanNuMan/sem/blob/master/LICENSE)
 - Release [![Releases](https://img.shields.io/github/release/IrfaanNuMan/sem/all.svg?style=flat-square)](https://github.com/IrfaanNuMan/sem/releases)
+- Code Coverage [![codecov](https://codecov.io/gh/IrfaanNuMan/sem/branch/master/graph/badge.svg?token=VNIRTVZ5W4)](https://codecov.io/gh/IrfaanNuMan/sem)
+ 
 
- 5 requirements of 32 have been implemented, which is 15.6%.
+
+5 requirements of 32 have been implemented, which is 15.6%.
 
 | ID | NAME       | MET        | SCREENSHOT     |
 |:---:|:------------|:-------------:|:--------------|
