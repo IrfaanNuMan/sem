@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class App {
     /**
-     * @param args
+     * @param args main application connection
      */
     public static void main(String[] args) {
         // Create new Application
@@ -30,7 +30,7 @@ public class App {
 
 
 /***
- * method to get all city's population and print the report
+ * methods to get and print reports
  */
         //Prints all cities in the world descending
         ArrayList<City> cy = a.getPop();
@@ -157,7 +157,7 @@ public class App {
 
     /***
      *
-     * @param cy
+     * @param cy  method to  print report
      */
 
 
@@ -293,7 +293,7 @@ public ArrayList<City> topNPopCitiesInWorld()
 
     /***
      *
-     * @param cy2
+     * @param cy2 method to print top  N population of cities in a continent
      */
 
 
@@ -356,7 +356,7 @@ public ArrayList<City> topNPopCitiesInWorld()
 
     /***
      *
-     * @param cy3
+     * @param cy3 method to print top N population of  cities in a region
      */
 
 
@@ -419,7 +419,7 @@ public ArrayList<City> topNPopCitiesInWorld()
 
     /***
      *
-     * @param cy4
+     * @param cy4  method to  print all capital cities in a continent in descending order
      */
 
 
@@ -481,7 +481,7 @@ public ArrayList<City> topNPopCitiesInWorld()
 
         /***
          *
-         * @param cy5
+         * @param cy5  method to  print all capital cities inthe  world in descending order
          */
 
 
