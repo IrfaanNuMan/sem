@@ -32,9 +32,20 @@ jobs:
       script:
         - mvn package -DskipTests=true -Dmaven.javadoc.skip=true
         - docker-compose up --abort-on-container-exit
+        before_deploy:
+          # Set up git user name and tag this commit
+          - git config --local user.name "IrfaanNuMan"
+          - git config --local user.email "irfaan_numan@hotmail.com"
+          # Create temporary tag from date and Git log.
+          - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y-%m-%d')-$(git log --format=%h -1)}
+          # Set tag
+          - git tag $TRAVIS_TAG
 
 stages:
   - unit tests
   - integration tests
   - name: deploy
     if: branch = master
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
